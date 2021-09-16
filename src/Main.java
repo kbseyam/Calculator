@@ -1,21 +1,9 @@
-/*  harmash.com  هذا الكود مشروح بتفصيل في موقع
-    CopyRight © 2017 harmash.com - All Rights Reserved - developed by Mhamad Harmush
- */
-
-
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
+import java.awt.*;
+import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
- 
+
 public class Main extends JFrame {
  
     JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, comma, plus, equal, minus, divide, multiple, clear, back;
@@ -65,7 +53,7 @@ public class Main extends JFrame {
                 }
             }
         }
-        catch (Exception e) { }
+        catch (Exception ignored) { }
  
         b0 = new JButton("0");
         b1 = new JButton("1");
@@ -199,374 +187,371 @@ public class Main extends JFrame {
         add(oldValueLabel);
         add(operandLabel);
  
-        ActionListener actionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
- 
-                if (e.getSource() == b0)
-                {
-                    if (isEqualClicked == true || textField.getText().equals("0"))
-                        textField.setText("0");
- 
-                    else
-                        textField.setText(textField.getText()+"0");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == b1)
-                {
-                    if (isEqualClicked == true || textField.getText().equals("0"))
-                        textField.setText("1");
- 
-                    else
-                        textField.setText(textField.getText()+"1");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == b2)
-                {
-                    if (isEqualClicked == true || textField.getText().equals("0"))
-                        textField.setText("2");
- 
-                    else
-                        textField.setText(textField.getText()+"2");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == b3)
-                {
-                    if (isEqualClicked == true || textField.getText().equals("0"))
-                        textField.setText("3");
- 
-                    else
-                        textField.setText(textField.getText()+"3");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == b4)
-                {
-                    if (isEqualClicked == true || textField.getText().equals("0"))
-                        textField.setText("4");
- 
-                    else
-                        textField.setText(textField.getText()+"4");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == b5)
-                {
-                    if (isEqualClicked == true || textField.getText().equals("0"))
-                        textField.setText("5");
- 
-                    else
-                        textField.setText(textField.getText()+"5");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == b6)
-                {
-                    if (isEqualClicked == true || textField.getText().equals("0"))
-                        textField.setText("6");
- 
-                    else
-                        textField.setText(textField.getText()+"6");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == b7)
-                {
-                    if (isEqualClicked == true || textField.getText().equals("0"))
-                        textField.setText("7");
- 
-                    else
-                        textField.setText(textField.getText()+"7");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == b8)
-                {
-                    if (isEqualClicked == true || textField.getText().equals("0"))
-                        textField.setText("8");
- 
-                    else
-                        textField.setText(textField.getText()+"8");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == b9)
-                {
-                    if (isEqualClicked == true || textField.getText().equals("0"))
-                        textField.setText("9");
- 
-                    else
-                        textField.setText(textField.getText()+"9");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == comma)
-                {
-                    if (isEqualClicked == true || textField.getText().isEmpty())
-                        textField.setText("0.");
- 
-                    else if (!textField.getText().contains("."))
-                        textField.setText(textField.getText()+".");
- 
-                    isEqualClicked = false;
-                    isTextChanged = true;
-                }
- 
- 
-                else if (e.getSource() == plus && noClickedOperator == true)
-                {
-                    if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
-                        textField.setText("cannot divide by 0");
- 
-                    else if (isTextChanged == true || oldValueLabel.getText().isEmpty()) {
-                        try {
- 
-                            if (textField.getText().isEmpty())
-                                num = 0;
- 
-                            else
-                                num = Double.parseDouble(textField.getText());
- 
-                            if (oldValueLabel.getText().isEmpty()) {
-                                operation = 1;
-                                oldAnswer = 0;
-                            }
-                            else
-                                oldAnswer = Double.parseDouble(oldValueLabel.getText());
- 
-                            calculateOldAnswer();
-                            operandLabel.setText("+");
-                            oldValueLabel.setText(format.format(oldAnswer));
-                            textField.setText("");
- 
+        ActionListener actionListener = e -> {
+
+            if (e.getSource() == b0)
+            {
+                if (isEqualClicked || textField.getText().equals("0"))
+                    textField.setText("0");
+
+                else
+                    textField.setText(textField.getText()+"0");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == b1)
+            {
+                if (isEqualClicked || textField.getText().equals("0"))
+                    textField.setText("1");
+
+                else
+                    textField.setText(textField.getText()+"1");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == b2)
+            {
+                if (isEqualClicked || textField.getText().equals("0"))
+                    textField.setText("2");
+
+                else
+                    textField.setText(textField.getText()+"2");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == b3)
+            {
+                if (isEqualClicked || textField.getText().equals("0"))
+                    textField.setText("3");
+
+                else
+                    textField.setText(textField.getText()+"3");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == b4)
+            {
+                if (isEqualClicked || textField.getText().equals("0"))
+                    textField.setText("4");
+
+                else
+                    textField.setText(textField.getText()+"4");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == b5)
+            {
+                if (isEqualClicked || textField.getText().equals("0"))
+                    textField.setText("5");
+
+                else
+                    textField.setText(textField.getText()+"5");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == b6)
+            {
+                if (isEqualClicked || textField.getText().equals("0"))
+                    textField.setText("6");
+
+                else
+                    textField.setText(textField.getText()+"6");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == b7)
+            {
+                if (isEqualClicked || textField.getText().equals("0"))
+                    textField.setText("7");
+
+                else
+                    textField.setText(textField.getText()+"7");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == b8)
+            {
+                if (isEqualClicked || textField.getText().equals("0"))
+                    textField.setText("8");
+
+                else
+                    textField.setText(textField.getText()+"8");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == b9)
+            {
+                if (isEqualClicked || textField.getText().equals("0"))
+                    textField.setText("9");
+
+                else
+                    textField.setText(textField.getText()+"9");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == comma)
+            {
+                if (isEqualClicked || textField.getText().isEmpty())
+                    textField.setText("0.");
+
+                else if (!textField.getText().contains("."))
+                    textField.setText(textField.getText()+".");
+
+                isEqualClicked = false;
+                isTextChanged = true;
+            }
+
+
+            else if (e.getSource() == plus && noClickedOperator)
+            {
+                if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
+                    textField.setText("cannot divide by 0");
+
+                else if (isTextChanged || oldValueLabel.getText().isEmpty()) {
+                    try {
+
+                        if (textField.getText().isEmpty())
+                            num = 0;
+
+                        else
+                            num = Double.parseDouble(textField.getText());
+
+                        if (oldValueLabel.getText().isEmpty()) {
                             operation = 1;
+                            oldAnswer = 0;
                         }
-                        catch(Exception ex) {
-                            textField.setText("Error");
-                        }
-                    }
-                    isTextChanged = false;
-                    noClickedOperator = false;
-                }
- 
- 
-                else if (e.getSource() == minus && noClickedOperator == true)
-                {
-                    if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
-                        textField.setText("cannot divide by 0");
- 
-                    else if (isTextChanged == true || oldValueLabel.getText().isEmpty()) {
-                        try {
- 
-                            if (textField.getText().isEmpty())
-                                num = 0;
- 
-                            else
-                                num = Double.parseDouble(textField.getText());
- 
-                            if (oldValueLabel.getText().isEmpty()) {
-                                operation = 2;
-                                oldAnswer = 0;
-                            }
-                            else
-                                oldAnswer = Double.parseDouble(oldValueLabel.getText());
- 
-                            calculateOldAnswer();
-                            operandLabel.setText("-");
-                            oldValueLabel.setText(format.format(oldAnswer));
-                            textField.setText("");
- 
-                            operation = 2;
-                        }
-                        catch(Exception ex) {
-                            textField.setText("Error");
-                        }
-                    }
-                    isTextChanged = false;
-                    noClickedOperator = false;
-                }
- 
- 
-                else if (e.getSource() == multiple && noClickedOperator == true)
-                {
-                    if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
-                        textField.setText("cannot divide by 0");
- 
-                    else if (isTextChanged == true || oldValueLabel.getText().isEmpty()) {
-                        try {
- 
-                            if (textField.getText().isEmpty())
-                                num = 1;
- 
-                            else
-                                num = Double.parseDouble(textField.getText());
- 
-                            if (oldValueLabel.getText().isEmpty()) {
-                                operation = 3;
-                                oldAnswer = 1;
-                            }
-                            else
-                                oldAnswer = Double.parseDouble(oldValueLabel.getText());
- 
-                            calculateOldAnswer();
-                            operandLabel.setText("×");
-                            oldValueLabel.setText(format.format(oldAnswer));
-                            textField.setText("");
- 
-                            operation = 3;
-                        }
-                        catch(Exception ex) {
-                            textField.setText("Error");
-                        }
-                    }
-                    isTextChanged = false;
-                    noClickedOperator = false;
-                }
- 
- 
-                else if (e.getSource() == divide && noClickedOperator == true)
-                {
-                    if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
-                        textField.setText("cannot divide by 0");
- 
-                    else if (isTextChanged == true || oldValueLabel.getText().isEmpty()) {
-                        try {
- 
-                            if (textField.getText().isEmpty())
-                                num = 1;
- 
-                            else
-                                num = Double.parseDouble(textField.getText());
- 
-                            if (oldValueLabel.getText().isEmpty())
-                                oldAnswer = num;
- 
-                            else {
-                                oldAnswer = Double.parseDouble(oldValueLabel.getText());
-                                calculateOldAnswer();
-                            }
- 
-                            operandLabel.setText("÷");
-                            oldValueLabel.setText(format.format(oldAnswer));
-                            textField.setText("");
- 
-                            operation = 4;
-                        }
-                        catch(Exception ex) {
-                            textField.setText("Error");
-                        }
-                    }
-                    isTextChanged = false;
-                    noClickedOperator = false;
-                }
- 
- 
-                else if (e.getSource() == equal)
-                {
-                    if (!textField.getText().isEmpty() && !oldValueLabel.getText().isEmpty() && isEqualClicked == false) {
- 
-                        double a = Double.parseDouble(oldValueLabel.getText());
-                        double b = Double.parseDouble(textField.getText());
-                        char operand = operandLabel.getText().charAt(0);
- 
-                        switch (operand) {
-                            case '+':
-                                answer = a + b;
-                                textField.setText(format.format(answer));
-                                break;
- 
-                            case '-':
-                                answer = a - b;
-                                textField.setText(format.format(answer));
-                                break;
- 
-                            case '×':
-                                answer = a * b;
-                                textField.setText(format.format(answer));
-                                break;
- 
-                            case '÷':
-                                if (b == 0)
-                                    textField.setText("cannot divide by 0");
-                                else {
-                                    answer = a / b;
-                                    textField.setText(format.format(answer));
-                                }
-                                break;
-                        }
-                    }
- 
-                    else if (textField.getText().isEmpty() && !oldValueLabel.getText().isEmpty())
-                        textField.setText(oldValueLabel.getText());
- 
-                    oldValueLabel.setText("");
-                    operandLabel.setText("");
- 
-                    isEqualClicked = true;
-                    noClickedOperator = true;
-                }
- 
- 
-                else if (e.getSource() == back)
-                {
-                    if (textField.getText().equals("Error") || textField.getText().equals("cannot divide by 0"))
+                        else
+                            oldAnswer = Double.parseDouble(oldValueLabel.getText());
+
+                        calculateOldAnswer();
+                        operandLabel.setText("+");
+                        oldValueLabel.setText(format.format(oldAnswer));
                         textField.setText("");
-                    else if (!textField.getText().isEmpty())
-                        textField.setText(textField.getText().substring(0, textField.getText().length() - 1));
+
+                        operation = 1;
+                    }
+                    catch(Exception ex) {
+                        textField.setText("Error");
+                    }
                 }
- 
- 
-                else if (e.getSource() == clear) {
-                    oldValueLabel.setText("");
+                isTextChanged = false;
+                noClickedOperator = false;
+            }
+
+
+            else if (e.getSource() == minus && noClickedOperator)
+            {
+                if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
+                    textField.setText("cannot divide by 0");
+
+                else if (isTextChanged || oldValueLabel.getText().isEmpty()) {
+                    try {
+
+                        if (textField.getText().isEmpty())
+                            num = 0;
+
+                        else
+                            num = Double.parseDouble(textField.getText());
+
+                        if (oldValueLabel.getText().isEmpty()) {
+                            operation = 2;
+                            oldAnswer = 0;
+                        }
+                        else
+                            oldAnswer = Double.parseDouble(oldValueLabel.getText());
+
+                        calculateOldAnswer();
+                        operandLabel.setText("-");
+                        oldValueLabel.setText(format.format(oldAnswer));
+                        textField.setText("");
+
+                        operation = 2;
+                    }
+                    catch(Exception ex) {
+                        textField.setText("Error");
+                    }
+                }
+                isTextChanged = false;
+                noClickedOperator = false;
+            }
+
+
+            else if (e.getSource() == multiple && noClickedOperator)
+            {
+                if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
+                    textField.setText("cannot divide by 0");
+
+                else if (isTextChanged || oldValueLabel.getText().isEmpty()) {
+                    try {
+
+                        if (textField.getText().isEmpty())
+                            num = 1;
+
+                        else
+                            num = Double.parseDouble(textField.getText());
+
+                        if (oldValueLabel.getText().isEmpty()) {
+                            operation = 3;
+                            oldAnswer = 1;
+                        }
+                        else
+                            oldAnswer = Double.parseDouble(oldValueLabel.getText());
+
+                        calculateOldAnswer();
+                        operandLabel.setText("×");
+                        oldValueLabel.setText(format.format(oldAnswer));
+                        textField.setText("");
+
+                        operation = 3;
+                    }
+                    catch(Exception ex) {
+                        textField.setText("Error");
+                    }
+                }
+                isTextChanged = false;
+                noClickedOperator = false;
+            }
+
+
+            else if (e.getSource() == divide && noClickedOperator)
+            {
+                if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
+                    textField.setText("cannot divide by 0");
+
+                else if (isTextChanged || oldValueLabel.getText().isEmpty()) {
+                    try {
+
+                        if (textField.getText().isEmpty())
+                            num = 1;
+
+                        else
+                            num = Double.parseDouble(textField.getText());
+
+                        if (oldValueLabel.getText().isEmpty())
+                            oldAnswer = num;
+
+                        else {
+                            oldAnswer = Double.parseDouble(oldValueLabel.getText());
+                            calculateOldAnswer();
+                        }
+
+                        operandLabel.setText("÷");
+                        oldValueLabel.setText(format.format(oldAnswer));
+                        textField.setText("");
+
+                        operation = 4;
+                    }
+                    catch(Exception ex) {
+                        textField.setText("Error");
+                    }
+                }
+                isTextChanged = false;
+                noClickedOperator = false;
+            }
+
+
+            else if (e.getSource() == equal)
+            {
+                if (!textField.getText().isEmpty() && !oldValueLabel.getText().isEmpty() && !isEqualClicked) {
+
+                    double a = Double.parseDouble(oldValueLabel.getText());
+                    double b = Double.parseDouble(textField.getText());
+                    char operand = operandLabel.getText().charAt(0);
+
+                    switch (operand) {
+                        case '+':
+                            answer = a + b;
+                            textField.setText(format.format(answer));
+                            break;
+
+                        case '-':
+                            answer = a - b;
+                            textField.setText(format.format(answer));
+                            break;
+
+                        case '×':
+                            answer = a * b;
+                            textField.setText(format.format(answer));
+                            break;
+
+                        case '÷':
+                            if (b == 0)
+                                textField.setText("cannot divide by 0");
+                            else {
+                                answer = a / b;
+                                textField.setText(format.format(answer));
+                            }
+                            break;
+                    }
+                }
+
+                else if (textField.getText().isEmpty() && !oldValueLabel.getText().isEmpty())
+                    textField.setText(oldValueLabel.getText());
+
+                oldValueLabel.setText("");
+                operandLabel.setText("");
+
+                isEqualClicked = true;
+                noClickedOperator = true;
+            }
+
+
+            else if (e.getSource() == back)
+            {
+                if (textField.getText().equals("Error") || textField.getText().equals("cannot divide by 0"))
                     textField.setText("");
-                    operandLabel.setText("");
-                    oldAnswer = 0;
-                    num = 0;
-                    noClickedOperator = true;
-                }
+                else if (!textField.getText().isEmpty())
+                    textField.setText(textField.getText().substring(0, textField.getText().length() - 1));
+            }
+
+
+            else if (e.getSource() == clear) {
+                oldValueLabel.setText("");
+                textField.setText("");
+                operandLabel.setText("");
+                oldAnswer = 0;
+                num = 0;
+                noClickedOperator = true;
             }
         };
  
@@ -604,12 +589,7 @@ public class Main extends JFrame {
     }
  
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Main();
-            }
-        });
+        SwingUtilities.invokeLater(Main::new);
     }
  
 }
