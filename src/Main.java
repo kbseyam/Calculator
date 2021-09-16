@@ -5,30 +5,30 @@ import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 
 public class Main extends JFrame {
- 
+
     JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, comma, plus, equal, minus, divide, multiple, clear, back;
     JTextField textField;
     JLabel oldValueLabel, operandLabel;
- 
+
     double num;
     double answer;
     double oldAnswer;
     int operation;
- 
+
     boolean isTextChanged = false;
     boolean noClickedOperator = true;
     boolean isEqualClicked = false;
     DecimalFormat format = new DecimalFormat("0.###############");
     Font font = new Font("Arial", Font.BOLD, 17);
- 
- 
+
+
     private void calculateOldAnswer() {
-        switch(operation) {
+        switch (operation) {
             case 1:
                 oldAnswer += num;
                 break;
             case 2:
-                if(!oldValueLabel.getText().isEmpty())
+                if (!oldValueLabel.getText().isEmpty())
                     oldAnswer -= num;
                 else
                     oldAnswer = num - oldAnswer;
@@ -41,10 +41,10 @@ public class Main extends JFrame {
                 break;
         }
     }
- 
- 
+
+
     private void createAndShowGUI() {
- 
+
         try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -52,9 +52,9 @@ public class Main extends JFrame {
                     break;
                 }
             }
+        } catch (Exception ignored) {
         }
-        catch (Exception ignored) { }
- 
+
         b0 = new JButton("0");
         b1 = new JButton("1");
         b2 = new JButton("2");
@@ -76,7 +76,7 @@ public class Main extends JFrame {
         textField = new JTextField("0");
         oldValueLabel = new JLabel("", JLabel.RIGHT);
         operandLabel = new JLabel("", JLabel.RIGHT);
- 
+
         oldValueLabel.setBounds(11, 5, 214, 20);
         operandLabel.setBounds(225, 5, 20, 20);
         textField.setBounds(11, 25, 234, 47);
@@ -98,7 +98,7 @@ public class Main extends JFrame {
         b0.setBounds(10, 215, 93, 42);
         comma.setBounds(106, 215, 45, 42);
         divide.setBounds(154, 215, 45, 42);
- 
+
         b0.setFont(font);
         b1.setFont(font);
         b2.setFont(font);
@@ -119,11 +119,11 @@ public class Main extends JFrame {
         back.setFont(font);
         oldValueLabel.setFont(font);
         operandLabel.setFont(font);
- 
+
         textField.setEditable(false);
         textField.setHorizontalAlignment(JTextField.RIGHT);
         textField.setFont(new Font("Monospaced", Font.BOLD, 19));
- 
+
         oldValueLabel.setForeground(Color.cyan);
         operandLabel.setForeground(Color.yellow);
         b0.setForeground(Color.white);
@@ -144,7 +144,7 @@ public class Main extends JFrame {
         divide.setForeground(Color.white);
         clear.setForeground(Color.white);
         back.setForeground(Color.white);
- 
+
         b0.setBackground(Color.darkGray);
         b1.setBackground(Color.darkGray);
         b2.setBackground(Color.darkGray);
@@ -164,7 +164,7 @@ public class Main extends JFrame {
         clear.setBackground(new Color(223, 1, 1));
         back.setBackground(new Color(255, 128, 0));
         getContentPane().setBackground(Color.black);
-       
+
         add(b0);
         add(b1);
         add(b2);
@@ -186,164 +186,119 @@ public class Main extends JFrame {
         add(textField);
         add(oldValueLabel);
         add(operandLabel);
- 
+
         ActionListener actionListener = e -> {
 
-            if (e.getSource() == b0)
-            {
+            if (e.getSource() == b0) {
                 if (isEqualClicked || textField.getText().equals("0"))
                     textField.setText("0");
 
                 else
-                    textField.setText(textField.getText()+"0");
+                    textField.setText(textField.getText() + "0");
 
                 isEqualClicked = false;
                 isTextChanged = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == b1)
-            {
+            } else if (e.getSource() == b1) {
                 if (isEqualClicked || textField.getText().equals("0"))
                     textField.setText("1");
 
                 else
-                    textField.setText(textField.getText()+"1");
+                    textField.setText(textField.getText() + "1");
 
                 isEqualClicked = false;
                 isTextChanged = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == b2)
-            {
+            } else if (e.getSource() == b2) {
                 if (isEqualClicked || textField.getText().equals("0"))
                     textField.setText("2");
 
                 else
-                    textField.setText(textField.getText()+"2");
+                    textField.setText(textField.getText() + "2");
 
                 isEqualClicked = false;
                 isTextChanged = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == b3)
-            {
+            } else if (e.getSource() == b3) {
                 if (isEqualClicked || textField.getText().equals("0"))
                     textField.setText("3");
 
                 else
-                    textField.setText(textField.getText()+"3");
+                    textField.setText(textField.getText() + "3");
 
                 isEqualClicked = false;
                 isTextChanged = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == b4)
-            {
+            } else if (e.getSource() == b4) {
                 if (isEqualClicked || textField.getText().equals("0"))
                     textField.setText("4");
 
                 else
-                    textField.setText(textField.getText()+"4");
+                    textField.setText(textField.getText() + "4");
 
                 isEqualClicked = false;
                 isTextChanged = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == b5)
-            {
+            } else if (e.getSource() == b5) {
                 if (isEqualClicked || textField.getText().equals("0"))
                     textField.setText("5");
 
                 else
-                    textField.setText(textField.getText()+"5");
+                    textField.setText(textField.getText() + "5");
 
                 isEqualClicked = false;
                 isTextChanged = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == b6)
-            {
+            } else if (e.getSource() == b6) {
                 if (isEqualClicked || textField.getText().equals("0"))
                     textField.setText("6");
 
                 else
-                    textField.setText(textField.getText()+"6");
+                    textField.setText(textField.getText() + "6");
 
                 isEqualClicked = false;
                 isTextChanged = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == b7)
-            {
+            } else if (e.getSource() == b7) {
                 if (isEqualClicked || textField.getText().equals("0"))
                     textField.setText("7");
 
                 else
-                    textField.setText(textField.getText()+"7");
+                    textField.setText(textField.getText() + "7");
 
                 isEqualClicked = false;
                 isTextChanged = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == b8)
-            {
+            } else if (e.getSource() == b8) {
                 if (isEqualClicked || textField.getText().equals("0"))
                     textField.setText("8");
 
                 else
-                    textField.setText(textField.getText()+"8");
+                    textField.setText(textField.getText() + "8");
 
                 isEqualClicked = false;
                 isTextChanged = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == b9)
-            {
+            } else if (e.getSource() == b9) {
                 if (isEqualClicked || textField.getText().equals("0"))
                     textField.setText("9");
 
                 else
-                    textField.setText(textField.getText()+"9");
+                    textField.setText(textField.getText() + "9");
 
                 isEqualClicked = false;
                 isTextChanged = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == comma)
-            {
+            } else if (e.getSource() == comma) {
                 if (isEqualClicked || textField.getText().isEmpty())
                     textField.setText("0.");
 
                 else if (!textField.getText().contains("."))
-                    textField.setText(textField.getText()+".");
+                    textField.setText(textField.getText() + ".");
 
                 isEqualClicked = false;
                 isTextChanged = true;
-            }
-
-
-            else if (e.getSource() == plus && noClickedOperator)
-            {
+            } else if (e.getSource() == plus && noClickedOperator) {
                 if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
                     textField.setText("cannot divide by 0");
 
@@ -359,8 +314,7 @@ public class Main extends JFrame {
                         if (oldValueLabel.getText().isEmpty()) {
                             operation = 1;
                             oldAnswer = 0;
-                        }
-                        else
+                        } else
                             oldAnswer = Double.parseDouble(oldValueLabel.getText());
 
                         calculateOldAnswer();
@@ -369,18 +323,13 @@ public class Main extends JFrame {
                         textField.setText("");
 
                         operation = 1;
-                    }
-                    catch(Exception ex) {
+                    } catch (Exception ex) {
                         textField.setText("Error");
                     }
                 }
                 isTextChanged = false;
                 noClickedOperator = false;
-            }
-
-
-            else if (e.getSource() == minus && noClickedOperator)
-            {
+            } else if (e.getSource() == minus && noClickedOperator) {
                 if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
                     textField.setText("cannot divide by 0");
 
@@ -396,8 +345,7 @@ public class Main extends JFrame {
                         if (oldValueLabel.getText().isEmpty()) {
                             operation = 2;
                             oldAnswer = 0;
-                        }
-                        else
+                        } else
                             oldAnswer = Double.parseDouble(oldValueLabel.getText());
 
                         calculateOldAnswer();
@@ -406,18 +354,13 @@ public class Main extends JFrame {
                         textField.setText("");
 
                         operation = 2;
-                    }
-                    catch(Exception ex) {
+                    } catch (Exception ex) {
                         textField.setText("Error");
                     }
                 }
                 isTextChanged = false;
                 noClickedOperator = false;
-            }
-
-
-            else if (e.getSource() == multiple && noClickedOperator)
-            {
+            } else if (e.getSource() == multiple && noClickedOperator) {
                 if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
                     textField.setText("cannot divide by 0");
 
@@ -433,8 +376,7 @@ public class Main extends JFrame {
                         if (oldValueLabel.getText().isEmpty()) {
                             operation = 3;
                             oldAnswer = 1;
-                        }
-                        else
+                        } else
                             oldAnswer = Double.parseDouble(oldValueLabel.getText());
 
                         calculateOldAnswer();
@@ -443,18 +385,13 @@ public class Main extends JFrame {
                         textField.setText("");
 
                         operation = 3;
-                    }
-                    catch(Exception ex) {
+                    } catch (Exception ex) {
                         textField.setText("Error");
                     }
                 }
                 isTextChanged = false;
                 noClickedOperator = false;
-            }
-
-
-            else if (e.getSource() == divide && noClickedOperator)
-            {
+            } else if (e.getSource() == divide && noClickedOperator) {
                 if (textField.getText().equals("0") && operandLabel.getText().equals("÷"))
                     textField.setText("cannot divide by 0");
 
@@ -480,18 +417,13 @@ public class Main extends JFrame {
                         textField.setText("");
 
                         operation = 4;
-                    }
-                    catch(Exception ex) {
+                    } catch (Exception ex) {
                         textField.setText("Error");
                     }
                 }
                 isTextChanged = false;
                 noClickedOperator = false;
-            }
-
-
-            else if (e.getSource() == equal)
-            {
+            } else if (e.getSource() == equal) {
                 if (!textField.getText().isEmpty() && !oldValueLabel.getText().isEmpty() && !isEqualClicked) {
 
                     double a = Double.parseDouble(oldValueLabel.getText());
@@ -523,9 +455,7 @@ public class Main extends JFrame {
                             }
                             break;
                     }
-                }
-
-                else if (textField.getText().isEmpty() && !oldValueLabel.getText().isEmpty())
+                } else if (textField.getText().isEmpty() && !oldValueLabel.getText().isEmpty())
                     textField.setText(oldValueLabel.getText());
 
                 oldValueLabel.setText("");
@@ -533,19 +463,12 @@ public class Main extends JFrame {
 
                 isEqualClicked = true;
                 noClickedOperator = true;
-            }
-
-
-            else if (e.getSource() == back)
-            {
+            } else if (e.getSource() == back) {
                 if (textField.getText().equals("Error") || textField.getText().equals("cannot divide by 0"))
                     textField.setText("");
                 else if (!textField.getText().isEmpty())
                     textField.setText(textField.getText().substring(0, textField.getText().length() - 1));
-            }
-
-
-            else if (e.getSource() == clear) {
+            } else if (e.getSource() == clear) {
                 oldValueLabel.setText("");
                 textField.setText("");
                 operandLabel.setText("");
@@ -554,8 +477,8 @@ public class Main extends JFrame {
                 noClickedOperator = true;
             }
         };
- 
- 
+
+
         b0.addActionListener(actionListener);
         b1.addActionListener(actionListener);
         b2.addActionListener(actionListener);
@@ -574,7 +497,7 @@ public class Main extends JFrame {
         equal.addActionListener(actionListener);
         clear.addActionListener(actionListener);
         back.addActionListener(actionListener);
- 
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Calculator");
         setSize(270, 305);
@@ -583,13 +506,13 @@ public class Main extends JFrame {
         setLayout(null);
         setVisible(true);
     }
- 
+
     public Main() {
         createAndShowGUI();
     }
- 
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Main::new);
     }
- 
+
 }
